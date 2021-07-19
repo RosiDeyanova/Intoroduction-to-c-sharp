@@ -1,0 +1,13 @@
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\bin\Debug\netcoreapp3.1\Problem 1.exe
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\bin\Debug\netcoreapp3.1\Problem 1.deps.json
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\bin\Debug\netcoreapp3.1\Problem 1.runtimeconfig.json
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\bin\Debug\netcoreapp3.1\Problem 1.runtimeconfig.dev.json
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\bin\Debug\netcoreapp3.1\Problem 1.dll
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\bin\Debug\netcoreapp3.1\Problem 1.pdb
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\obj\Debug\netcoreapp3.1\Problem 1.csprojAssemblyReference.cache
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\obj\Debug\netcoreapp3.1\Problem 1.AssemblyInfoInputs.cache
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\obj\Debug\netcoreapp3.1\Problem 1.AssemblyInfo.cs
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\obj\Debug\netcoreapp3.1\Problem 1.csproj.CoreCompileInputs.cache
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\obj\Debug\netcoreapp3.1\Problem 1.dll
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\obj\Debug\netcoreapp3.1\Problem 1.pdb
+C:\Users\Rosi Deyanova\source\repos\22. LINQ\22. LINQ\obj\Debug\netcoreapp3.1\Problem 1.genruntimeconfig.cache
