@@ -1,0 +1,13 @@
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\bin\Debug\netcoreapp3.1\AmISick.exe
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\bin\Debug\netcoreapp3.1\AmISick.deps.json
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\bin\Debug\netcoreapp3.1\AmISick.runtimeconfig.json
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\bin\Debug\netcoreapp3.1\AmISick.runtimeconfig.dev.json
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\bin\Debug\netcoreapp3.1\AmISick.dll
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\bin\Debug\netcoreapp3.1\AmISick.pdb
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\obj\Debug\netcoreapp3.1\AmISick.AssemblyInfoInputs.cache
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\obj\Debug\netcoreapp3.1\AmISick.AssemblyInfo.cs
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\obj\Debug\netcoreapp3.1\AmISick.csproj.CoreCompileInputs.cache
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\obj\Debug\netcoreapp3.1\AmISick.dll
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\obj\Debug\netcoreapp3.1\AmISick.pdb
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\obj\Debug\netcoreapp3.1\AmISick.genruntimeconfig.cache
+C:\Users\Rosi Deyanova\source\repos\AmISick\AmISick\obj\Debug\netcoreapp3.1\AmISick.csprojAssemblyReference.cache
