@@ -22,7 +22,7 @@ namespace AmISick
 
             while (true)
             {
-                Console.WriteLine("Commands: 'register', 'help', 'diagnose', 'check'\nType command: ");
+                Console.WriteLine("Commands: 'register', 'help', 'diagnose', 'check' or 'exit'\nType command: ");
                 string command = Console.ReadLine();
                 if (command == "register")
                 {
@@ -66,6 +66,10 @@ namespace AmISick
                             Console.WriteLine(patients[i].ToString());
                         }
                     }
+                }
+                else if (command == "exit")
+                {
+                    Environment.Exit(0);
                 }
                 else
                 {
