@@ -5,34 +5,8 @@ using System.Text;
 
 namespace AmISick
 {
-    enum Symptom
+   class Patient
     {
-        //string enumText = ((Coolness)1).ToString() - взимане на името на enum
-        [Display(Name = "Runny nose")]
-        RunnyNose,
-        [Display(Name = "Sore throat")]
-        SoreThroat,
-        [Display(Name = "Headache")]
-        Headache,
-        [Display(Name = "Coughing")]
-        Coughing,
-        [Display(Name = "Sneezing")]
-        Sneezing,
-        [Display(Name = "Muscle aches")]
-        MuscleAches,
-        [Display(Name = "Vomiting")]
-        Vomiting,
-        [Display(Name = "Тrouble breathing")]
-        TroubleBreathing,
-        [Display(Name = "Loss of taste or smell")]
-        LossOfTasteSmell,
-        [Display(Name = "Stomach pain")]
-        StomachPain
-    }
-
-    class Patient
-    {
-        
         private string firstName;
         private string secondName;
         private string lastName;
@@ -97,7 +71,7 @@ namespace AmISick
             this.firstName = firstName;
             this.lastName = lastName;
             this.secondName = secondName;
-            diagnosis = "Undiagnosed";
+            this.diagnosis = "Undiagnosed";
             this.symptoms = new List<Symptom>();
         }
 
@@ -110,7 +84,7 @@ namespace AmISick
                 symptomsString.Append(", ");
             }
             symptomsString.Remove(symptomsString.Length - 2, 2);
-            return String.Format("{0} {1} {2}: {3} - {4}",firstName,secondName,lastName,symptomsString,diagnosis);
+            return string.Format("{0} {1} {2}: {3} - {4}",firstName,secondName,lastName,symptomsString,diagnosis);
         }
 
         public void AddSymptom(Symptom symptom) 
@@ -144,16 +118,17 @@ namespace AmISick
                 default:Console.WriteLine("Try using correct symptom index."); break;
             }
         }
-        public static void PrintSymptoms() 
+        public static string PrintSymptoms() 
         {
             int n = 1;
+            StringBuilder symptoms = new StringBuilder();
             foreach (Symptom val in Enum.GetValues(typeof(Symptom)))
             {
                 string enumText = ((Symptom)n-1).ToString(); //callind the display prorepty does not work
-                Console.WriteLine("{0}: {1}",n,enumText);
+                symptoms.AppendLine(string.Format("{0}: {1}",n,enumText));
                 n++;
             }
-
+            return symptoms.ToString();
 
         }
     }

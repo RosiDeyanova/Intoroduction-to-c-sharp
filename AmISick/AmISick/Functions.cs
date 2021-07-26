@@ -7,15 +7,17 @@ namespace AmISick
 {
     class Functions
     {
-        public static void PrintAllUndiagnosedPatients(List<Patient> patients) //printing all the undiagnosed patients with their indexes
+        public static string PrintAllUndiagnosedPatients(List<Patient> patients) //printing all the undiagnosed patients with their indexes
         {
+            StringBuilder result = new StringBuilder();
             for (int i = 0; i < patients.Count; i++)
             {
                 if (patients[i].Diagnosis == "Undiagnosed")
                 {
-                    Console.WriteLine(i + ". " + patients[i].ToString());
+                    result.AppendLine(i + ". " + patients[i].ToString());
                 }
             }
+            return result.ToString();
         }
         public static bool IsThereUndiagnosedPatients(List<Patient> patients) //checking if there are undiagnosed patients left
         {
@@ -30,17 +32,17 @@ namespace AmISick
         }
         public static void Diagnose(Doctor doctor, List<Patient> patients) //adding a diagnosis to a patient
         {
-            ReadFromFile(patients);
+            ReadFromFile("database.txt",patients);
             Console.WriteLine("Undiagnosed patients: ");
-            PrintAllUndiagnosedPatients(patients);
+            Console.WriteLine(PrintAllUndiagnosedPatients(patients));
             Console.WriteLine("Type the index of the pation who's going to be diagnosed: ");
             int index = int.Parse(Console.ReadLine());
             Console.WriteLine("Type diagnosis: ");
             string diagnosis = Console.ReadLine();
             patients[index].Diagnosis = diagnosis + doctor.ToString();
-            WriteInFile(patients);
+            WriteInFile("database.txt",patients);
             Console.WriteLine("Patients left: ");
-            PrintAllUndiagnosedPatients(patients);
+            Console.WriteLine(PrintAllUndiagnosedPatients(patients));
 
         }
         public static void PushPatientInfo(string[] info, List<Patient> patients) //separating the info prom a line of input and putting it into an object
@@ -48,21 +50,17 @@ namespace AmISick
             Patient temp = new Patient();
             temp.FirstName = info[0];
             temp.SecondName = info[1];
-            temp.LastName = (info[2].Remove(info[2].Length - 1));
+            temp.LastName = info[2];
             string symptom = "";
             int i = 3;
             while(info[i]!="-")
             {
-                if (info[i+1]!="-")
-                {
-                    symptom = info[i].Remove(info[i].Length - 1);
-                }
-                else
+                if (info[i]!="")
                 {
                     symptom = info[i];
+                    Symptom tempSymptom = (Symptom)Enum.Parse(typeof(Symptom), symptom, true);
+                    temp.AddSymptom(tempSymptom);
                 }
-                Symptom tempSymptom = (Symptom)Enum.Parse(typeof(Symptom), symptom, true);
-                temp.AddSymptom(tempSymptom);
                 i++;
             }
             if (info[i+1]!= "Undiagnosed")
@@ -77,9 +75,9 @@ namespace AmISick
             }
             patients.Add(temp);
         }
-        public static void ReadFromFile(List<Patient> patients) //Reading a file and pushing the info into List<Patient>
+        public static void ReadFromFile(string fileName,List<Patient> patients) //Reading a file and pushing the info into List<Patient>
         {
-            StreamReader databaseReader = new StreamReader("database.txt");
+            StreamReader databaseReader = new StreamReader(fileName);
             using (databaseReader)
             {
                 int lineNumber = 0;
@@ -87,15 +85,15 @@ namespace AmISick
                 while (line != null)
                 {
                     lineNumber++;
-                    var info = line.Split(" ");
+                    var info = line.Split(' ',':',',');
                     PushPatientInfo(info, patients);
                     line = databaseReader.ReadLine();
                 }
             }
         }
-        public static void WriteInFile(List<Patient> patients) //saving the current List<Patient> into a file
+        public static void WriteInFile(string fileName,List<Patient> patients) //saving the current List<Patient> into a file
         {
-            StreamWriter databaseWriter = new StreamWriter("database.txt");
+            StreamWriter databaseWriter = new StreamWriter(fileName);
             using (databaseWriter)
             {
                 for (int i = 0; i < patients.Count; i++)
@@ -118,9 +116,10 @@ namespace AmISick
                     Console.WriteLine(patients[i].ToString());
                 } //using the names as identificator, if the project gets bigger, it will be used egn
             }
-            WriteInFile(patients);
+            WriteInFile("databse.txt",patients);
 
         }
+    
         public static void Register(List<Patient> patients) //inputing the first data for the registration
         {
             string firstName, secondName, lastName;
@@ -158,16 +157,10 @@ namespace AmISick
 
         }
 
-        public static void Help()
+        public static string Help()
         {
-            Console.WriteLine("How to register:");
-            Console.WriteLine("Type the command 'register' followed by your first, second and last name. \nThen type the appropriate symptoms using their code numbers. \nWhen you have typed all of your symptoms type 'submit'. \nSymptoms: ");
-            Patient.PrintSymptoms();
-            Console.WriteLine("How to check your registered problems:");
-            Console.WriteLine("Type the command 'check' followed by your first, second and last name. \nYou will see your submitted problems and their status.");
-            Console.WriteLine("How to diagnose someone as a doctor:");
-            Console.WriteLine("Type the command 'diagnose' followed by the doctor's password. \nChoose which patient would you like to diagnose, using their indexes and type the diagnosis.");
-
+            string symptoms = Patient.PrintSymptoms();
+            return "How to register:\nType the command 'register' followed by your first, second and last name. \nThen type the appropriate symptoms using their code numbers. \nWhen you have typed all of your symptoms type 'submit'. \nSymptoms:" + symptoms + "How to check your registered problems:\nType the command 'check' followed by your first, second and last name. \nYou will see your submitted problems and their status.\nHow to diagnose someone as a doctor:\nType the command 'diagnose' followed by the doctor's password. \nChoose which patient would you like to diagnose, using their indexes and type the diagnosis.";
         }
 
 

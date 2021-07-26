@@ -27,12 +27,12 @@ namespace AmISick
                 if (command == "register")
                 {
                     patients.Clear();
-                    Functions.ReadFromFile(patients);
+                    Functions.ReadFromFile("database.txt",patients);
                     Functions.Register(patients);
                 }
                 else if (command == "help")
                 {
-                    Functions.Help();
+                   Console.WriteLine(Functions.Help());
                 }
                 else if (command == "diagnose")
                 {
@@ -51,7 +51,7 @@ namespace AmISick
                 else if (command == "check")
                 {
                     patients.Clear();
-                    Functions.ReadFromFile(patients);
+                    Functions.ReadFromFile("database.txt", patients);
                     string firstName, secondName, lastName;
                     Console.WriteLine("First Name: ");
                     firstName = Console.ReadLine();
