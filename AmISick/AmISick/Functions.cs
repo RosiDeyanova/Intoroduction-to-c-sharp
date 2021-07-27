@@ -7,7 +7,21 @@ namespace AmISick
 {
     class Functions
     {
-        public static void Diagnose(PatientsManager patientsManager,Doctor doctor) //adding a diagnosis to a patient
+        public static void Diagnose(PatientsManager patientsManager, List<Doctor> doctors) 
+        {
+            string password;
+            Console.WriteLine("Password: ");
+            password = Console.ReadLine();
+            for (int i = 0; i < doctors.Count; i++)
+            {
+                if (password == doctors[i].Password)
+                {
+                    patientsManager.ReadFromFile();
+                    Diagnose(patientsManager, doctors[i]);
+                }
+            }
+        }
+        private static void Diagnose(PatientsManager patientsManager,Doctor doctor) //adding a diagnosis to a patient
         {
             Console.WriteLine("Undiagnosed patients: ");
             Console.WriteLine(patientsManager.PrintAllUndiagnosedPatients());
@@ -47,6 +61,8 @@ namespace AmISick
 
         public static void Register(PatientsManager patientsManager) //inputing the first data for the registration
         {
+            patientsManager.ReadFromFile();
+
             string firstName, secondName, lastName;
             Console.WriteLine("Register: ");
             Console.WriteLine("First Name: ");
@@ -63,10 +79,24 @@ namespace AmISick
             Console.WriteLine(patientInfo);
         }
 
-        public static string Help()
+        public static void Help()
         {
             string symptoms = Patient.PrintSymptoms();
-            return "How to register:\nType the command 'register' followed by your first, second and last name. \nThen type the appropriate symptoms using their code numbers. \nWhen you have typed all of your symptoms type 'submit'. \nSymptoms:" + symptoms + "How to check your registered problems:\nType the command 'check' followed by your first, second and last name. \nYou will see your submitted problems and their status.\nHow to diagnose someone as a doctor:\nType the command 'diagnose' followed by the doctor's password. \nChoose which patient would you like to diagnose, using their indexes and type the diagnosis.";
+            Console.WriteLine("How to register:\nType the command 'register' followed by your first, second and last name. \nThen type the appropriate symptoms using their code numbers. \nWhen you have typed all of your symptoms type 'submit'. \nSymptoms:" + symptoms + "How to check your registered problems:\nType the command 'check' followed by your first, second and last name. \nYou will see your submitted problems and their status.\nHow to diagnose someone as a doctor:\nType the command 'diagnose' followed by the doctor's password. \nChoose which patient would you like to diagnose, using their indexes and type the diagnosis.");
+        }
+
+        public static void Check(PatientsManager patientsManager) 
+        {
+            patientsManager.ReadFromFile();
+            string firstName, secondName, lastName;
+            Console.WriteLine("First Name: ");
+            firstName = Console.ReadLine();
+            Console.WriteLine("Second Name: ");
+            secondName = Console.ReadLine();
+            Console.WriteLine("Last Name: ");
+            lastName = Console.ReadLine();
+            string patientInfo = patientsManager.PrintPatientInfo(firstName, secondName, lastName);
+            Console.WriteLine(patientInfo);
         }
 
     }

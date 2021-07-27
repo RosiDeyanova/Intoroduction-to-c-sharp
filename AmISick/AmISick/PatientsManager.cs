@@ -11,11 +11,11 @@ namespace AmISick
         const string PATIENTS_FILE = "database.txt";
         private List<Patient> patients;
 
-        public PatientsManager() 
+        public PatientsManager()
         {
             this.patients = new List<Patient>();
         }
-        public PatientsManager(List<Patient>patients) 
+        public PatientsManager(List<Patient> patients)
         {
             this.patients = patients;
         }
@@ -44,7 +44,7 @@ namespace AmISick
             }
             return false;
         }
-     
+
         public void AddPatient(Patient patient)//creating a problem and adding it to the database
         {
             patients.Add(patient);
@@ -65,6 +65,8 @@ namespace AmISick
 
         public void ReadFromFile() //Reading a file and pushing the info into List<Patient>
         {
+            Clear();
+
             StreamReader databaseReader = new StreamReader(PATIENTS_FILE);
             using (databaseReader)
             {
@@ -93,7 +95,8 @@ namespace AmISick
                 if (info[i] != "")
                 {
                     string symptom = info[i];
-                    Symptom tempSymptom = (Symptom)Enum.Parse(typeof(Symptom), symptom, true);
+                    Symptom tempSymptom;
+                    tempSymptom = (Symptom)Enum.Parse(typeof(Symptom), symptom, true);
                     patient.AddSymptom(tempSymptom);
                 }
                 i++;
@@ -133,7 +136,7 @@ namespace AmISick
             WriteInFile();
         }
 
-        public void Clear() 
+        public void Clear()
         {
             this.patients.Clear();
         }
