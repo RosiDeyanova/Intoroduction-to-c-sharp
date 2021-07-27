@@ -28,9 +28,9 @@ namespace AmISick
                 string command = Console.ReadLine();
                 if (command == "register")
                 {
-                    patients.Clear();
-                    Functions.ReadFromFile("database.txt",patients);
-                    Functions.Register(patients);
+                    patientsManager.Clear();
+                    patientsManager.ReadFromFile();
+                    Functions.Register(patientsManager);
                 }
                 else if (command == "help")
                 {
@@ -45,15 +45,16 @@ namespace AmISick
                     {
                         if (password == doctors[i].Password)
                         {
-                            patients.Clear();
-                            Functions.Diagnose(doctors[i],patients);
+                            patientsManager.Clear();
+                            patientsManager.ReadFromFile();
+                            Functions.Diagnose(patientsManager,doctors[i]);
                         }
                     }
                 }
                 else if (command == "check")
                 {
-                    patients.Clear();
-                    Functions.ReadFromFile("database.txt");
+                    patientsManager.Clear();
+                    patientsManager.ReadFromFile();
                     string firstName, secondName, lastName;
                     Console.WriteLine("First Name: ");
                     firstName = Console.ReadLine();

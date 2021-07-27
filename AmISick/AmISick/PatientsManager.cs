@@ -63,7 +63,7 @@ namespace AmISick
             }
         }
 
-        private void ReadFromFile() //Reading a file and pushing the info into List<Patient>
+        public void ReadFromFile() //Reading a file and pushing the info into List<Patient>
         {
             StreamReader databaseReader = new StreamReader(PATIENTS_FILE);
             using (databaseReader)
@@ -129,9 +129,13 @@ namespace AmISick
 
         public void AddPatientDiagnose(int patientIndex, string diagnose)
         {
-            ReadFromFile();
             patients[patientIndex].AddDiagnose(diagnose);
             WriteInFile();
+        }
+
+        public void Clear() 
+        {
+            this.patients.Clear();
         }
     }
 }
