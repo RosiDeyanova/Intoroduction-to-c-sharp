@@ -11,11 +11,11 @@ namespace AmISick
         private string secondName;
         private string lastName;
         private List<Symptom> symptoms;
-        private string diagnosis;
+        private string diagnose;
 
         public string FirstName 
         {
-            get 
+            get
             {
                 return this.firstName;
             }
@@ -50,11 +50,11 @@ namespace AmISick
         {
             get
             {
-                return this.diagnosis;
+                return this.diagnose;
             }
             set
             {
-                this.diagnosis = value;
+                this.diagnose = value;
             }
         }
 
@@ -63,7 +63,7 @@ namespace AmISick
             this.firstName = "Unknown";
             this.lastName = "Unknown";
             this.secondName = "Unknown";
-            this.diagnosis = "Undiagnosed";
+            this.diagnose = "Undiagnosed";
             this.symptoms = new List<Symptom>();
         }
         public Patient(string firstName, string secondName, string lastName) 
@@ -71,7 +71,7 @@ namespace AmISick
             this.firstName = firstName;
             this.lastName = lastName;
             this.secondName = secondName;
-            this.diagnosis = "Undiagnosed";
+            this.diagnose = "Undiagnosed";
             this.symptoms = new List<Symptom>();
         }
 
@@ -84,7 +84,7 @@ namespace AmISick
                 symptomsString.Append(", ");
             }
             symptomsString.Remove(symptomsString.Length - 2, 2);
-            return string.Format("{0} {1} {2}: {3} - {4}",firstName,secondName,lastName,symptomsString,diagnosis);
+            return string.Format("{0} {1} {2}: {3} - {4}",firstName,secondName,lastName,symptomsString,diagnose);
         }
 
         public void AddSymptom(Symptom symptom) 
@@ -130,6 +130,11 @@ namespace AmISick
             }
             return symptoms.ToString();
 
+        }
+
+        public void AddDiagnose(string diagnose) 
+        {
+            this.diagnose = diagnose.ToString();
         }
     }
 }

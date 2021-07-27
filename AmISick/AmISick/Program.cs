@@ -6,9 +6,11 @@ namespace AmISick
 {
     class Program
     {
+       
         static void Main(string[] args)
         {
-            var patients = new List<Patient>();
+            PatientsManager patientsManager = new PatientsManager();
+           // var patients = new List<Patient>();
             var doctors = new List<Doctor>()
             {
               new Doctor("Nikolina", "Petkova" , "npetkova12"),
@@ -51,7 +53,7 @@ namespace AmISick
                 else if (command == "check")
                 {
                     patients.Clear();
-                    Functions.ReadFromFile("database.txt", patients);
+                    Functions.ReadFromFile("database.txt");
                     string firstName, secondName, lastName;
                     Console.WriteLine("First Name: ");
                     firstName = Console.ReadLine();
@@ -59,13 +61,8 @@ namespace AmISick
                     secondName = Console.ReadLine();
                     Console.WriteLine("Last Name: ");
                     lastName = Console.ReadLine();
-                    for (int i = 0; i < patients.Count; i++)
-                    {
-                        if (firstName == patients[i].FirstName && secondName == patients[i].SecondName && lastName==patients[i].LastName)
-                        {
-                            Console.WriteLine(patients[i].ToString());
-                        }
-                    }
+                    string patientInfo = patientsManager.PrintPatientInfo(firstName, secondName, lastName);
+                    Console.WriteLine(patientInfo);
                 }
                 else if (command == "exit")
                 {
